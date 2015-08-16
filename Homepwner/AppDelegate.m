@@ -23,7 +23,11 @@
     
     BNRItemsViewController *itemsViewController = [[BNRItemsViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    self.window.rootViewController = itemsViewController;
+    //Create an instance of UINavigationController.
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:itemsViewController];
+    
+    
+    self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

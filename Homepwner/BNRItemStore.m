@@ -70,4 +70,33 @@
     return item;
 }
 
+- (BNRItem *)createNoMoreItem
+{
+    BNRItem *item = [[BNRItem alloc] initWithItemName:@"No More Items"];
+    [self.privateItems addObject:item];
+    
+    return item;
+}
+
+- (void)removeItem:(BNRItem *)item
+{
+    [self.privateItems removeObjectIdenticalTo:item];
+}
+
+- (void)moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
+{
+    if (fromIndex == toIndex)
+        return;
+    
+    //Get pointer to object that is being moved.
+    BNRItem *item = self.privateItems[fromIndex];
+    
+    //Remove the item from the array.
+    [self.privateItems removeObjectAtIndex:fromIndex];
+    
+    //Insert the same item to array
+    [self.privateItems insertObject:item atIndex:toIndex];
+    
+}
+
 @end
