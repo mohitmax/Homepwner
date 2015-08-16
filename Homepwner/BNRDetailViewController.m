@@ -8,6 +8,7 @@
 
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
+#import "ChangeDateViewController.h"
 
 @interface BNRDetailViewController () <UITextFieldDelegate>
 
@@ -55,6 +56,16 @@
     item.itemName = self.nameField.text;
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = self.valueField.text.intValue;
+}
+
+#pragma mark - Action methods
+
+- (IBAction)changeDateButton:(id)sender
+{
+    ChangeDateViewController *vc = [[ChangeDateViewController alloc] init];
+    vc.itemDate = self.item.dateCreated;
+    vc.item = self.item;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITextField Delegate

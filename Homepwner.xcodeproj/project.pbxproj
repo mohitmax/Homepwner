@@ -10,6 +10,8 @@
 		705F7D891B7D8FDB00285314 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705F7D881B7D8FDB00285314 /* HeaderView.xib */; };
 		7069882C1B7EEB700085F3AC /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7069882A1B7EEB700085F3AC /* BNRDetailViewController.m */; };
 		7069882D1B7EEB700085F3AC /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7069882B1B7EEB700085F3AC /* BNRDetailViewController.xib */; };
+		706988311B8013840085F3AC /* ChangeDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7069882F1B8013840085F3AC /* ChangeDateViewController.m */; };
+		706988321B8013840085F3AC /* ChangeDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 706988301B8013840085F3AC /* ChangeDateViewController.xib */; };
 		706BABE51B7818F200B8C1CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BABE41B7818F200B8C1CC /* main.m */; };
 		706BABE81B7818F200B8C1CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BABE71B7818F200B8C1CC /* AppDelegate.m */; };
 		706BABEB1B7818F200B8C1CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BABEA1B7818F200B8C1CC /* ViewController.m */; };
@@ -37,6 +39,9 @@
 		706988291B7EEB700085F3AC /* BNRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailViewController.h; sourceTree = "<group>"; };
 		7069882A1B7EEB700085F3AC /* BNRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailViewController.m; sourceTree = "<group>"; };
 		7069882B1B7EEB700085F3AC /* BNRDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailViewController.xib; sourceTree = "<group>"; };
+		7069882E1B8013840085F3AC /* ChangeDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeDateViewController.h; sourceTree = "<group>"; };
+		7069882F1B8013840085F3AC /* ChangeDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeDateViewController.m; sourceTree = "<group>"; };
+		706988301B8013840085F3AC /* ChangeDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeDateViewController.xib; sourceTree = "<group>"; };
 		706BABDF1B7818F200B8C1CC /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		706BABE31B7818F200B8C1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		706BABE41B7818F200B8C1CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,6 +119,9 @@
 				706988291B7EEB700085F3AC /* BNRDetailViewController.h */,
 				7069882A1B7EEB700085F3AC /* BNRDetailViewController.m */,
 				7069882B1B7EEB700085F3AC /* BNRDetailViewController.xib */,
+				7069882E1B8013840085F3AC /* ChangeDateViewController.h */,
+				7069882F1B8013840085F3AC /* ChangeDateViewController.m */,
+				706988301B8013840085F3AC /* ChangeDateViewController.xib */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706988321B8013840085F3AC /* ChangeDateViewController.xib in Resources */,
 				706BABEE1B7818F200B8C1CC /* Main.storyboard in Resources */,
 				706BABF31B7818F200B8C1CC /* LaunchScreen.xib in Resources */,
 				706BABF01B7818F200B8C1CC /* Images.xcassets in Resources */,
@@ -255,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				706988311B8013840085F3AC /* ChangeDateViewController.m in Sources */,
 				706BABEB1B7818F200B8C1CC /* ViewController.m in Sources */,
 				706BABE81B7818F200B8C1CC /* AppDelegate.m in Sources */,
 				706BAC0D1B781DAF00B8C1CC /* BNRItem.m in Sources */,
