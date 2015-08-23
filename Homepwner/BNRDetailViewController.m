@@ -9,12 +9,17 @@
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
 
-@interface BNRDetailViewController () <UITextFieldDelegate>
+@interface BNRDetailViewController ()
+<UITextFieldDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @end
 
@@ -57,6 +62,27 @@
     item.valueInDollars = self.valueField.text.intValue;
 }
 
+#pragma mark - Action methods
+
+- (IBAction)takePicture:(id)sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else
+    {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
 #pragma mark - UITextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -66,6 +92,19 @@
     return YES;
 }
 
+#pragma mark - UIImagePicker Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //Get image from the info dictionary
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = image;
+    
+    //Dismiss the image picker 
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Touch Events
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [[self view] endEditing:YES];
