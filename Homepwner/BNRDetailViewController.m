@@ -8,6 +8,7 @@
 
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
+#import "BNRImageStore.h"
 
 @interface BNRDetailViewController ()
 <UITextFieldDelegate,
@@ -20,16 +21,33 @@ UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIButton *removePictureButton;
+
+@property (strong, nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
 @implementation BNRDetailViewController
+{
+    
+}
+
+#pragma mark - View life cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.imagePicker = [[UIImagePickerController alloc] init];
+
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     [self.navigationItem setTitle:self.item.itemName];
+    
     
     BNRItem *item = self.item;
     
@@ -46,6 +64,18 @@ UINavigationControllerDelegate>
     }
     
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    
+    NSString *imageKey = self.item.itemKey;
+    UIImage *imageToDisplay = [[BNRImageStore sharedStore] imageForKey:imageKey];
+    if (!imageToDisplay)
+    {
+        self.removePictureButton.enabled = false;
+    }
+    else
+    {
+        self.imageView.image = imageToDisplay;
+        self.removePictureButton.enabled = true;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -66,22 +96,68 @@ UINavigationControllerDelegate>
 
 - (IBAction)takePicture:(id)sender
 {
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    
+    BOOL cameraAvailableFlag = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (cameraAvailableFlag)
+        [self performSelector:@selector(showCameraController) withObject:nil afterDelay:0.3];
+    else
+        [self performSelector:@selector(showCameraRoll) withObject:nil afterDelay:0.3];
+}
+
+- (void)showCameraController
+{
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else
     {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
-    imagePicker.delegate = self;
+    _imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    _imagePicker.delegate = self;
+    [_imagePicker setAllowsEditing:YES];
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    [self presentViewController:_imagePicker animated:YES completion:nil];
 }
 
+- (IBAction)backgroundTapped:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
+- (IBAction)selectPicture:(id)sender
+{
+    [self showCameraRoll];
+}
+
+- (void)showCameraRoll
+{
+    UIImagePickerController *imgPicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imgPicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imgPicker.delegate = self;
+    [imgPicker setAllowsEditing:YES];
+    
+    [self presentViewController:imgPicker animated:YES completion:nil];
+}
+
+- (IBAction)removePicture:(id)sender
+{
+    if (self.imageView.image)
+    {
+        [[BNRImageStore sharedStore] deleteImageForKey:self.item.itemKey];
+        self.imageView.image = nil;
+        self.removePictureButton.enabled = false;
+    }
+    
+}
 
 #pragma mark - UITextField Delegate
 
@@ -97,11 +173,19 @@ UINavigationControllerDelegate>
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     //Get image from the info dictionary
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    UIImage *image = [[UIImage alloc] init];
+//    image = info[UIImagePickerControllerOriginalImage];
+    image = info[UIImagePickerControllerEditedImage];
+    
+//    Store the image in the BNRImageStore for this key.
+    [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+    
     self.imageView.image = image;
     
     //Dismiss the image picker 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Touch Events

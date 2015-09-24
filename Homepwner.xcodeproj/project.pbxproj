@@ -20,6 +20,7 @@
 		706BAC0A1B781A1600B8C1CC /* BNRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BAC091B781A1600B8C1CC /* BNRItemsViewController.m */; };
 		706BAC0D1B781DAF00B8C1CC /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BAC0C1B781DAF00B8C1CC /* BNRItem.m */; };
 		706BAC101B781FC100B8C1CC /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 706BAC0F1B781FC100B8C1CC /* BNRItemStore.m */; };
+		70F0C9581BB138AB001074DF /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F0C9571BB138AB001074DF /* BNRImageStore.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		706BAC0C1B781DAF00B8C1CC /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		706BAC0E1B781FC100B8C1CC /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		706BAC0F1B781FC100B8C1CC /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
+		70F0C9561BB138AB001074DF /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		70F0C9571BB138AB001074DF /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 			children = (
 				706BAC0E1B781FC100B8C1CC /* BNRItemStore.h */,
 				706BAC0F1B781FC100B8C1CC /* BNRItemStore.m */,
+				70F0C9561BB138AB001074DF /* BNRImageStore.h */,
+				70F0C9571BB138AB001074DF /* BNRImageStore.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -197,7 +202,7 @@
 		706BABD71B7818F200B8C1CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Mohit Sadhu";
 				TargetAttributes = {
 					706BABDE1B7818F200B8C1CC = {
@@ -259,6 +264,7 @@
 				706BABE81B7818F200B8C1CC /* AppDelegate.m in Sources */,
 				706BAC0D1B781DAF00B8C1CC /* BNRItem.m in Sources */,
 				7069882C1B7EEB700085F3AC /* BNRDetailViewController.m in Sources */,
+				70F0C9581BB138AB001074DF /* BNRImageStore.m in Sources */,
 				706BAC0A1B781A1600B8C1CC /* BNRItemsViewController.m in Sources */,
 				706BABE51B7818F200B8C1CC /* main.m in Sources */,
 				706BAC101B781FC100B8C1CC /* BNRItemStore.m in Sources */,
@@ -324,6 +330,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -390,6 +397,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mohit Sadhu (XMHE446847)";
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mohitsadhu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b6179b7c-8ec0-4b1c-80a4-d48c8d500b60";
 			};
@@ -402,6 +410,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mohit Sadhu (XMHE446847)";
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mohitsadhu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "b6179b7c-8ec0-4b1c-80a4-d48c8d500b60";
 			};
@@ -421,6 +430,7 @@
 				);
 				INFOPLIST_FILE = HomepwnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mohitsadhu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Homepwner.app/Homepwner";
 			};
@@ -436,6 +446,7 @@
 				);
 				INFOPLIST_FILE = HomepwnerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mohitsadhu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Homepwner.app/Homepwner";
 			};
